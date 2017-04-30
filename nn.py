@@ -9,6 +9,16 @@ from tflearn.layers.normalization import local_response_normalization
 from tflearn.layers.estimator import regression
 from tflearn.data_augmentation import ImageAugmentation
 
+
+
+def load_data(path):
+    f = h5py.File(path, 'r')
+    X = f['x_dataset']
+    Y = f['y_dataset']
+    return X, Y
+  
+  
+  
 X, Y = load_data('pizza.h5')
 
 # Image augmentation
@@ -46,9 +56,3 @@ model = tflearn.DNN(network, checkpoint_path='snapcow_ckpt',
 model.fit(X, Y, n_epoch=1000, validation_set=0.1, shuffle=True,
           show_metric=True, batch_size=64, snapshot_step=200,
 snapshot_epoch=False, run_id='attempt1')
-
-def load_data(path):
-    f = h5py.File(path, 'r')
-    X = f['x_dataset']
-    Y = f['y_dataset']
-    return X, Y
