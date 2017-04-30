@@ -26,7 +26,6 @@ img_aug = ImageAugmentation()
 img_aug.add_random_flip_leftright()
 img_aug.add_random_rotation(max_angle=25.)
 img_aug.add_random_flip_updown()
-img_aug.add_random_90degrees_rotation(rotations=[0,1,2,3])
 
 # Building 'AlexNet'
 network = input_data(shape=[None, 402, 536, 3], data_augmentation=img_aug)
