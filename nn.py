@@ -19,7 +19,7 @@ img_aug.add_random_flip_updown()
 img_aug.add_random_90degrees_rotation(rotations=[0,1,2,3])
 
 # Building 'AlexNet'
-network = input_data(shape=[None, 402, 536, 3] data_augmentation=img_aug)
+network = input_data(shape=[None, 402, 536, 3], data_augmentation=img_aug)
 network = conv_2d(network, 96, 11, strides=4, activation='relu')
 network = max_pool_2d(network, 3, strides=2)
 network = local_response_normalization(network)
